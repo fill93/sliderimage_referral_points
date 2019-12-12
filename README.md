@@ -1,4 +1,4 @@
-# sliderimage_referral_points
+# Slider Image Referral Points
 ViewPager of images with position reference points
 
 # Installation
@@ -15,23 +15,25 @@ ViewPager of images with position reference points
 Build.gradle
 
     dependencies {
-      implementation 'com.github.fill93:ValidCpf:1.0.0'
+      implementation 'com.github.fill93:sliderimage_referral_points:1.0.0'
     }
     
 # Usage
 
 Add the XML tag as shown in the image
 
-    <>ADD IMG
+    ![](app/src/main/res/drawable/CapturarXmlImageSlider.PNG)
 
 Instantiate your list of SliderItem objects and add your Items
 
-    <>ADD IMG
+    ![](app/src/main/res/drawable/InstanciaLista.PNG)
 
 Use setPages passing your list
 
-    <>ADD AIMGE
+    ![](app/src/main/res/drawable/SetPages.PNG)
     
     
-![](app/src/main/res/drawable/Capturar0.PNG)
+# Result
+
+
 
