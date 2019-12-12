@@ -22,18 +22,21 @@ Build.gradle
 
 Add the XML tag as shown in the image
 
-![](app/src/main/res/drawable/CapturarXmlImageSlider.PNG)
+![](CapturarXmlImageSlider.PNG)
 
-Instantiate your list of SliderItem objects and add your Items
 
-![](app/src/main/res/drawable/InstanciaLista.PNG)
+Instantiate your list of **SliderItem** objects and add your Items
 
-Use setPages passing your list
+![](InstanciaLista.PNG)
 
-![](app/src/main/res/drawable/SetPages.PNG)
-    
+
+Use **setPages** passing your list
+
+![](SetPages.PNG)
+   
     
 # Result
 
+![](PrintMyApp.jpeg)
 
 
