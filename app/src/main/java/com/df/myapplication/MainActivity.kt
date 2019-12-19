@@ -11,13 +11,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val sliderItems = ArrayList<SliderItem>()
-
-        sliderItems.add(SliderItem("https://ap.imagensbrasil.org/images/2019/12/12/65.jpg"))
-        sliderItems.add(SliderItem("https://ap.imagensbrasil.org/images/2019/12/12/d252372c8131aa156bfdacc56861b4cd.jpg"))
-        sliderItems.add(SliderItem(R.drawable.ic_apps_24))
+        val sliderItems = listOf(
+            SliderItem(title = "T1" ,url = "https://ap.imagensbrasil.org/images/2019/11/29/Banner-home-novo-bf.jpg", link = "http://www.google.com"),
+            SliderItem(url = "https://ap.imagensbrasil.org/images/2019/10/03/bannere037db3e3eca2528.png", link = "Link2"),
+            SliderItem(resID = R.drawable.ic_apps_24, link = "link3"),
+            SliderItem(title = "T2", resID = R.drawable.ic_apps_24, link = "link3")
+        )
 
         slide.setPages(sliderItems)
+        slide.handleAnimate(3500)
 
     }
 }

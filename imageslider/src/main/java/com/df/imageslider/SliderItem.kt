@@ -8,9 +8,10 @@ import kotlinx.android.parcel.Parcelize
  */
 @Parcelize
 data class SliderItem constructor(
-    var title: String,
+    var title: String = "",
     var url: String? = null,
-    var resID: Int = 0
+    var resID: Int = 0,
+    var link : String = ""
 ) : Parcelable {
 
     constructor(title: String, resID: Int): this(title, null, resID)
@@ -20,5 +21,13 @@ data class SliderItem constructor(
     constructor(resID: Int): this("", null, resID)
 
     constructor(url: String): this("", url, 0)
+
+//    constructor(title: String, resID: Int , link: String): this(title, null, resID,link)
+//
+    //constructor( url: String, link: String): this( "",url, link = link)
+//
+//    constructor(resID: Int, link: String): this("", null, resID)
+//
+//    constructor(url: String, link: String): this("", url, 0)
 
 }
