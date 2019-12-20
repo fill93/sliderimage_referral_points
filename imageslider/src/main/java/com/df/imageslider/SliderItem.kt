@@ -1,5 +1,6 @@
 package com.df.imageslider
 import android.os.Parcelable
+import android.view.View
 import kotlinx.android.parcel.Parcelize
 
 
@@ -12,6 +13,8 @@ data class SliderItem constructor(
     var url: String? = null,
     var resID: Int = 0,
     var link : String = ""
+    //var clickListener : ClickAction? = null
+    //val act : () -> Unit
 ) : Parcelable {
 
     constructor(title: String, resID: Int): this(title, null, resID)

@@ -1,23 +1,19 @@
 package com.df.imageslider
-
 import android.content.ActivityNotFoundException
 import android.content.Context
-import android.content.Intent
 import android.graphics.Color
-import android.net.Uri
 import android.os.Handler
 import android.util.AttributeSet
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat.startActivity
 import androidx.viewpager.widget.ViewPager
 import kotlinx.android.synthetic.main.slide_content.view.*
 import java.util.*
 
 
-class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mContext, attrs) , CallBack {
+class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mContext, attrs) , CallOnClickSlider {
 
     private val sliderItems = ArrayList<SliderItem>()
     private lateinit var mSectionsPagerAdapter: SliderAdapter
@@ -26,7 +22,9 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
     private var activeDotPos = 0
 
     lateinit var timer : Timer
-    var current_position = 0
+    private var current_position = 0
+
+    lateinit var callOnClickSlider: CallOnClickSlider
 
     private val pageChangeListener = object : ViewPager.OnPageChangeListener {
         override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {}
@@ -108,6 +106,7 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
 
     /**
      * Receive image list List<SliderItem>
+     *      @param sliderItems List with objects of type SliderItem
      */
     fun setPages(sliderItems: List<SliderItem>/* , animate : Boolean = false*/) {
         this.sliderItems.clear()
@@ -120,16 +119,11 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
             pager.offscreenPageLimit = sliderItems.size
         }
         initDots()
-
-//        if(animate){
-//            handleAnimate()
-//        }
-
     }
 
     /**
      * THIS FUNCTION AUTOMATICALLY ANIMATES THE IMAGE SLIDE
-     * @param timeScroll It's the time it takes for the auto scroll to pass the slide
+     *      @param timeScroll It's the time it takes for the auto scroll to pass the slide
      */
     fun handleAnimate(timeScroll : Long){
         val handle = Handler()
@@ -141,9 +135,6 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
         }
 
         timer = Timer()
-//        timer.schedule(500){
-//            handle.post(runnable)
-//        }
         timer.schedule( object : TimerTask() {
             override fun run() {
                 handle.post(runnable)
@@ -160,16 +151,14 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
         dotsLayout.visibility = View.GONE
     }
 
-    override fun onClickImage(item: SliderItem) {
-        try {
-            Toast.makeText(this.context, "Abrindo: " + item.link, Toast.LENGTH_SHORT).show()
-            val url = item.link
-            val i = Intent(Intent.ACTION_VIEW)
-            i.data = Uri.parse(url)
-            this.context.startActivity(i)
-        }catch (a : ActivityNotFoundException){
-            Toast.makeText(this.context, "Link inválido", Toast.LENGTH_SHORT).show()
-            a.printStackTrace()
-        }
+    fun actionSetCall(callOnClickSlider: CallOnClickSlider ){
+        this.callOnClickSlider = callOnClickSlider
     }
+
+    override fun onClickSlider(item: SliderItem) {
+        this.callOnClickSlider.onClickSlider(item)
+    }
+
+
+
 }
