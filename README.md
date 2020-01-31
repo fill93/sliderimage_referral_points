@@ -34,6 +34,15 @@ Use **setPages** passing your list
 
 ![](SetPages.PNG)
    
+
+Use **handleAnimate** by passing the time in milliseconds to animate your slide
+
+![](handleAnimate.PNG)
+    
+
+To capture user input on your slide, implement the **CallOnClickSlider** interface and its method **(onClickSlider)**
+
+![](callSlider.PNG)
     
 # Result
 
