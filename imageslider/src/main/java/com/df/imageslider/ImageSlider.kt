@@ -23,7 +23,6 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
 
     lateinit var timer : Timer
     private var current_position = 0
-
     lateinit var callOnClickSlider: CallOnClickSlider
 
     private val pageChangeListener = object : ViewPager.OnPageChangeListener {
@@ -105,14 +104,14 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
     */
 
     /**
-     * Receive image list List<SliderItem>
+     * RECEIVE IMAGE LIST List<SliderItem>
      *      @param sliderItems List with objects of type SliderItem
      */
-    fun setPages(sliderItems: List<SliderItem>/* , animate : Boolean = false*/) {
+    fun setPages(sliderItems: List<SliderItem> , idErroImage : Int = 0 ) {
         this.sliderItems.clear()
         this.sliderItems.addAll(sliderItems)
 
-        mSectionsPagerAdapter = SliderAdapter(context, sliderItems,this)
+        mSectionsPagerAdapter = SliderAdapter(context, sliderItems, idErroImage , this)
 
         if (sliderItems.isNotEmpty()) {
             pager.adapter = mSectionsPagerAdapter
@@ -143,14 +142,23 @@ class ImageSlider(mContext: Context, attrs: AttributeSet) : ConstraintLayout(mCo
 
     }
 
+    /**
+     * SHOW CURRENT POSITION REFERENCE POINTS
+     */
     fun showDots() {
         dotsLayout.visibility = View.VISIBLE
     }
 
+    /**
+     * HIDES CURRENT POSITION REFERENCE POINTS
+     */
     fun hideDots() {
         dotsLayout.visibility = View.GONE
     }
 
+    /**
+     * SET CALLBACK
+     */
     fun actionSetCall(callOnClickSlider: CallOnClickSlider ){
         this.callOnClickSlider = callOnClickSlider
     }

@@ -8,7 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.slide_item_container.view.*
 
-class SliderAdapter(private val context: Context, private val sliderItems: List<SliderItem> , private val callOnClickSlider: CallOnClickSlider) : PagerAdapter() {
+class SliderAdapter(private val context: Context, private val sliderItems: List<SliderItem> , private val erroImage : Int , private val callOnClickSlider: CallOnClickSlider) : PagerAdapter() {
 
     override fun isViewFromObject(view: View, obj: Any): Boolean {
         return view == obj
@@ -30,14 +30,14 @@ class SliderAdapter(private val context: Context, private val sliderItems: List<
         if (slide.resID != 0) {
             Glide.with(context)
                 .load(slide.resID)
-                .apply(RequestOptions().error(R.drawable.round).centerInside())
+                .apply(RequestOptions().error(erroImage).centerInside())
                 .into(layout.img_a)
         }
 
         if (slide.url != null) {
             Glide.with(context)
                 .load(slide.url)
-                .apply(RequestOptions().error(R.drawable.round).centerInside())
+                .apply(RequestOptions().error(erroImage).centerInside())
                 .into(layout.img_a)
         }
 
