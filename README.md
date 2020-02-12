@@ -15,7 +15,7 @@ ViewPager of images with position reference points
 Build.gradle
 
     dependencies {
-      implementation 'com.github.fill93:sliderimage_referral_points:1.0.3'
+      implementation 'com.github.fill93:sliderimage_referral_points:1.0.4'
     }
     
 [![](https://jitpack.io/v/fill93/sliderimage_referral_points.svg)](https://jitpack.io/#fill93/sliderimage_referral_points)
@@ -35,6 +35,8 @@ Instantiate your list of **SliderItem** objects and add your Items
 Use **setPages** passing your list
 
 ![](SetPages.PNG)
+        
+Pass as 2nd parameter **R.drawable.yourimage** to **setPages** function if you want to add an image in case of an error loading the image in the slider
    
 
 Use **handleAnimate** by passing the time in milliseconds to animate your slide
