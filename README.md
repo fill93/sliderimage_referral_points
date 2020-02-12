@@ -50,6 +50,8 @@ To capture user input on your slide, implement the **CallOnClickSlider** interfa
     
 # Result
 
-![](PrintMyApp.jpeg)
+[Veja o resultado aqui (Vídeo)](https://www.linkedin.com/posts/filipe-pimentel-97854111b_simples-por%C3%A9m-muito-%C3%BAtil-image-slider-activity-6633460640138698752-SUtf)
+
+
 
 
